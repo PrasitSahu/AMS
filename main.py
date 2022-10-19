@@ -128,13 +128,12 @@ def record_attendance():
                     cursor.execute(cmd)
                     connection.commit()
 
-                print('\nRecord Updated Successfully. :) \n')
+                print('\nRecord Updated Successfully :) \n')
 
                 while True:
                     to_update_excel = input('want to update in excel sheet? ')
                     if to_update_excel.lower() in ['yes', 'y']:
                         update_records()
-                        print("Updated Successfully :)")
                         break
                     elif to_update_excel.lower() in ['no', 'n']:
                         break
@@ -217,7 +216,7 @@ def update_records():
     if exists(file):
         os.remove(file)
     wb.save(file)
-    print('updated successfully. :)\n')
+    print('updated successfully :)\n')
 
 
 def add_student():
@@ -283,7 +282,8 @@ def connect_db(db_name):
     connection = mysql.connect(host='localhost',
                                user='root',
                                password=password or '',
-                               database=db_name)
+                               database=db_name,
+                               auth_plugin='mysql_native_password')
     return connection
 
 
